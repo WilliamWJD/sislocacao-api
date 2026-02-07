@@ -5,6 +5,7 @@ import com.sislocacao.adapter.input.dto.request.SalvarUsuarioRequest;
 import com.sislocacao.adapter.input.dto.response.UsuarioResponse;
 import com.sislocacao.core.usecase.usuario.SalvarUsuarioUseCase;
 import com.sislocacao.core.domain.model.Usuario;
+import com.sislocacao.ports.input.SalvarUsuarioInputPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,18 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-    private final SalvarUsuarioUseCase salvarUsuarioUseCase;
+    private final SalvarUsuarioInputPort salvarUsuarioInputPort;
     private final UsuarioMapper usuarioMapper;
 
-    public UsuarioController(SalvarUsuarioUseCase salvarUsuarioUseCase, UsuarioMapper usuarioMapper) {
-        this.salvarUsuarioUseCase = salvarUsuarioUseCase;
+    public UsuarioController(SalvarUsuarioInputPort salvarUsuarioInputPort, UsuarioMapper usuarioMapper) {
+        this.salvarUsuarioInputPort = salvarUsuarioInputPort;
         this.usuarioMapper = usuarioMapper;
     }
 
     @PostMapping
     public ResponseEntity<Object> salvarUsuario(@RequestBody SalvarUsuarioRequest salvarUsuarioRequest){
         Usuario usuario = usuarioMapper.paraUsuario(salvarUsuarioRequest);
-        UsuarioResponse usuarioResponse = usuarioMapper.paraUsuarioResponse(salvarUsuarioUseCase.executar(usuario));
+        UsuarioResponse usuarioResponse = usuarioMapper.paraUsuarioResponse(salvarUsuarioInputPort.executar(usuario));
         return ResponseEntity.ok(usuarioResponse);
     }
 }
