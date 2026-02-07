@@ -1,5 +1,6 @@
 package com.sislocacao.adapter.output.repository.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class ImovelEntity {
     private Boolean garagem;
     private Integer comodos;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LocacaoEntity> locacoes = new ArrayList<>();
 }

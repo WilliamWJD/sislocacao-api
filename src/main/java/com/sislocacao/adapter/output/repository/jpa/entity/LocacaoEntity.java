@@ -23,6 +23,7 @@ public class LocacaoEntity {
     private LocalDate dataDeInicio;
     private LocalDate dataDeTermino;
     private BigDecimal valorAluguel;
+    private Boolean status;
 
     @ManyToOne
     @JoinColumn(name = "inquilino_id")

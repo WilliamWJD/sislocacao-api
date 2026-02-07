@@ -49,11 +49,11 @@ INSERT INTO TB_LOCADOR (nome, sobrenome, cpf, rg, telefone, email, nacionalidade
 VALUES ('Fernanda', 'Rocha', '444.555.666-77', '44.555.666-7', '(41) 98888-4444', 'fernanda.rocha@email.com', 'Brasileira', 'Casada', 'Advogada', 'Feminino', '1992-02-14');
 
 -- LOCACOES
-INSERT INTO TB_LOCACOES (data_de_inicio, data_de_termino, valor_aluguel, inquilino_id, imovel_id, locador_id)
-VALUES ('2025-01-01', '2025-12-31', 1800.00, 1, 1, 1);
+INSERT INTO TB_LOCACOES (data_de_inicio, data_de_termino, valor_aluguel, inquilino_id, imovel_id, locador_id, status)
+VALUES ('2025-01-01', '2025-12-31', 1800.00, 1, 1, 1, false);
 
-INSERT INTO TB_LOCACOES (data_de_inicio, data_de_termino, valor_aluguel, inquilino_id, imovel_id, locador_id)
-VALUES ('2025-02-01', '2026-01-31', 2500.00, 2, 2, 2);
+INSERT INTO TB_LOCACOES (data_de_inicio, data_de_termino, valor_aluguel, inquilino_id, imovel_id, locador_id, status)
+VALUES ('2025-02-01', '2026-01-31', 2500.00, 2, 2, 2, false);
 
 -- RECIBOS
 INSERT INTO TB_RECIBOS (numero_recibo, valor_energia, valor_agua, valor_juros, valor_total, valor_total_por_extenso, data_inicio, data_termino, locacao_id)

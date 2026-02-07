@@ -15,6 +15,7 @@ public class Locacao {
     private Inquilino inquilino;
     private Imovel imovel;
     private Locador locador;
+    private Boolean status;
 
     public Locacao(Long id, LocalDate dataDeInicio, LocalDate dataDeTermino, BigDecimal valorAluguel, Inquilino inquilino, Imovel imovel, Locador locador) {
         this.id = id;
@@ -26,6 +27,7 @@ public class Locacao {
         this.locador = locador;
 
         validaLocacao();
+        ativaLocacao();
     }
 
     public static Locacao criarLocacao(LocalDate dataDeInicio, Integer tempoDeContrato, BigDecimal valorAluguel, Inquilino inquilino, Imovel imovel, Locador locador) {
@@ -46,6 +48,14 @@ public class Locacao {
         }
 
         return dataDeInicio.plusMonths(tempoDeContrato);
+    }
+
+    public void ativaLocacao(){
+        this.status = Boolean.TRUE;
+    }
+
+    public void desativaLocacao(){
+        this.status = Boolean.FALSE;
     }
 
     public void validaLocacao(){
@@ -92,5 +102,9 @@ public class Locacao {
 
     public Long getId() {
         return id;
+    }
+
+    public Boolean getStatus() {
+        return status;
     }
 }

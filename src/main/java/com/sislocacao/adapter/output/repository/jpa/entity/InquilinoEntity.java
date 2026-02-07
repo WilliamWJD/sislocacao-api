@@ -1,5 +1,6 @@
 package com.sislocacao.adapter.output.repository.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class InquilinoEntity {
     private String genero;
     private LocalDate dataNascimento;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LocacaoEntity> locacoesEntity = new ArrayList<>();
 }
