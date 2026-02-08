@@ -24,8 +24,13 @@ public class ImovelEntity {
     private String descricao;
     private Boolean garagem;
     private Integer comodos;
+    private String numero;
 
     @JsonIgnore
     @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LocacaoEntity> locacoes = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private EnderecoEntity endereco;
 }
