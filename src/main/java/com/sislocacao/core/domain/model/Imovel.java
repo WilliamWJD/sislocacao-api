@@ -11,13 +11,15 @@ public class Imovel {
     private Integer comodos;
 
     private List<Locacao> locacoes = new ArrayList<>();
+    private Endereco endereco;
 
-    public Imovel(Long id, String descricao, Boolean garagem, Integer comodos, List<Locacao> locacoes) {
+    public Imovel(Long id, String descricao, Boolean garagem, Integer comodos, List<Locacao> locacoes, Endereco endereco) {
         this.id = id;
         this.descricao = descricao;
         this.garagem = garagem;
         this.comodos = comodos;
         this.locacoes = locacoes;
+        this.endereco = endereco;
     }
 
     public Long getId() {
@@ -38,5 +40,9 @@ public class Imovel {
 
     public List<Locacao> getLocacoes() {
         return locacoes;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
     }
 }

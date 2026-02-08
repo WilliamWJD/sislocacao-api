@@ -9,18 +9,22 @@ VALUES ('João', 'Silva', 'joao@email.com', '123456', true);
 INSERT INTO TB_USUARIOS (nome, sobrenome, email, senha, ativo)
 VALUES ('Maria', 'Souza', 'maria@email.com', '123456', false);
 
+-- ENDERECOS
+INSERT INTO TB_ENDERECOS (logradouro, estado, bairro, cidade, cep)
+VALUES ('Rua denilson de oliveira', 'SP', 'Jd Minesotta', 'Sumaré', '13179072');
+
 -- IMOVEIS
-INSERT INTO TB_IMOVEIS (descricao, garagem, comodos)
-VALUES ('Apartamento 2 quartos no centro', true, 5);
+INSERT INTO TB_IMOVEIS (descricao, garagem, comodos, numero, endereco_id)
+VALUES ('Apartamento 2 quartos no centro', true, 5, 'CASA 01-A', 1);
 
-INSERT INTO TB_IMOVEIS (descricao, garagem, comodos)
-VALUES ('Casa térrea com quintal', true, 6);
+INSERT INTO TB_IMOVEIS (descricao, garagem, comodos, numero, endereco_id)
+VALUES ('Casa térrea com quintal', true, 6, 'CASA 01-B', 1);
 
-INSERT INTO TB_IMOVEIS (descricao, garagem, comodos)
-VALUES ('Kitnet mobiliada', false, 2);
+INSERT INTO TB_IMOVEIS (descricao, garagem, comodos, numero, endereco_id)
+VALUES ('Kitnet mobiliada', false, 2, 'CASA 02-A', 1);
 
-INSERT INTO TB_IMOVEIS (descricao, garagem, comodos)
-VALUES ('Apartamento 3 quartos', true, 7);
+INSERT INTO TB_IMOVEIS (descricao, garagem, comodos, numero, endereco_id)
+VALUES ('Apartamento 3 quartos', true, 7, 'CASA 02-B', 1);
 
 -- INQUILINOS
 INSERT INTO TB_INQUILINOS (nome, sobrenome, cpf, rg, telefone, email, nacionalidade, estado_civil, profissao, genero, data_nascimento)
