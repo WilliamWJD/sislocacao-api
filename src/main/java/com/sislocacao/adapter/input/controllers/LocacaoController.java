@@ -5,6 +5,7 @@ import com.sislocacao.adapter.input.dto.response.LocacaoResponse;
 import com.sislocacao.adapter.input.mapper.LocacaoMapper;
 import com.sislocacao.core.domain.model.Locacao;
 import com.sislocacao.core.usecase.locacao.command.SalvarLocacaoCommand;
+import com.sislocacao.ports.input.AtualizarLocacaoInputPort;
 import com.sislocacao.ports.input.BuscarLocacoesInputPort;
 import com.sislocacao.ports.input.SalvarLocacaoInputPort;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,13 @@ public class LocacaoController {
     private final LocacaoMapper locacaoMapper;
     private final SalvarLocacaoInputPort salvarLocacaoInputPort;
     private final BuscarLocacoesInputPort buscarLocacoesInputPort;
+    private final AtualizarLocacaoInputPort atualizarLocacaoInputPort;
 
-    public LocacaoController(LocacaoMapper locacaoMapper, SalvarLocacaoInputPort salvarLocacaoInputPort, BuscarLocacoesInputPort buscarLocacoesInputPort) {
+    public LocacaoController(LocacaoMapper locacaoMapper, SalvarLocacaoInputPort salvarLocacaoInputPort, BuscarLocacoesInputPort buscarLocacoesInputPort, AtualizarLocacaoInputPort atualizarLocacaoInputPort) {
         this.locacaoMapper = locacaoMapper;
         this.salvarLocacaoInputPort = salvarLocacaoInputPort;
         this.buscarLocacoesInputPort = buscarLocacoesInputPort;
+        this.atualizarLocacaoInputPort = atualizarLocacaoInputPort;
     }
 
     @PostMapping
@@ -39,5 +42,13 @@ public class LocacaoController {
         List<Locacao> locacoes = buscarLocacoesInputPort.execute();
         List<LocacaoResponse> responses = locacaoMapper.paraLocacoesResponse(locacoes);
         return ResponseEntity.ok(responses);
+    }
+
+    @PutMapping("/locacaoId/{locacaoId}")
+    public ResponseEntity<LocacaoResponse> atualizarLocacao(@RequestBody SalvarLocacaoRequest request, @PathVariable Long locacaoId){
+        SalvarLocacaoCommand command = locacaoMapper.paraSalvarLocacaoCommand(request);
+        Locacao locacao = atualizarLocacaoInputPort.executar(command, locacaoId);
+        LocacaoResponse response = locacaoMapper.paraLocacaoResponse(locacao);
+        return ResponseEntity.ok(response);
     }
 }
