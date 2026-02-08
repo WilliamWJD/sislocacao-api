@@ -1,4 +1,4 @@
-package com.sislocacao.core.usecase.locacao;
+package com.sislocacao.core.usecase.locacao.command;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

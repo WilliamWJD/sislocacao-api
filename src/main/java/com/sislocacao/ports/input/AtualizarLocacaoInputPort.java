@@ -3,12 +3,13 @@ package com.sislocacao.ports.input;
 import com.sislocacao.core.domain.model.Locacao;
 import com.sislocacao.core.usecase.locacao.command.SalvarLocacaoCommand;
 
-public interface SalvarLocacaoInputPort {
+public interface AtualizarLocacaoInputPort {
     /**
      * Executar locacao.
      *
-     * @param locacao the locacao
+     * @param locacaoCommand the locacao command
+     * @param idLocacao      the id locacao
      * @return the locacao
      */
-    Locacao executar(SalvarLocacaoCommand locacao);
+    Locacao executar(SalvarLocacaoCommand locacaoCommand, Long idLocacao);
 }

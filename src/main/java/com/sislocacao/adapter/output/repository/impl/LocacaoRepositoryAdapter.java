@@ -8,6 +8,8 @@ import com.sislocacao.core.repository.ILocacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -28,5 +30,13 @@ public class LocacaoRepositoryAdapter implements ILocacaoRepository {
     @Override
     public Optional<Locacao> buscarLocacaoPorIdImovel(Long id) {
         return Optional.ofNullable(locacaoAdapterMapper.paraLocacao(locacaoJpaRepository.findByImovelId(id)));
+    }
+
+    @Override
+    public List<Locacao> buscarLocacoes() {
+        List<Locacao> locacoes = new ArrayList<>();
+        locacaoJpaRepository.findAll()
+                .forEach(locacaoEntity -> locacoes.add(locacaoAdapterMapper.paraLocacao(locacaoEntity)));
+        return locacoes;
     }
 }

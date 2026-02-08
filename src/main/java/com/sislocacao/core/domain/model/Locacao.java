@@ -30,9 +30,9 @@ public class Locacao {
         ativaLocacao();
     }
 
-    public static Locacao criarLocacao(LocalDate dataDeInicio, Integer tempoDeContrato, BigDecimal valorAluguel, Inquilino inquilino, Imovel imovel, Locador locador) {
+    public static Locacao criarLocacao(Long idLocacao, LocalDate dataDeInicio, Integer tempoDeContrato, BigDecimal valorAluguel, Inquilino inquilino, Imovel imovel, Locador locador) {
         return new Locacao(
-                null,
+                idLocacao,
                 dataDeInicio,
                 calculaDataDeTerminoComBaseNoTempoDeContrato(dataDeInicio, tempoDeContrato),
                 valorAluguel,
